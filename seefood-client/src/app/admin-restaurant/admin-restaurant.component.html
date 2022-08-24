@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="my-5">
+    <h1 class="display-2 text-center">Restaurents you own</h1>
+  </div>
+  <button
+    class="btn btn-lg btn-outline-primary"
+    (click)="openAddRestaurantDialogue()"
+  >
+    Add Restaurant
+  </button>
+
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Address</th>
+        <th scope="col">Created</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let restaurant of restaurants">
+        <th scope="row">
+          <img
+            width="50px"
+            height="50px"
+            class="rounded-circle"
+            src="http://127.0.0.1:8080/{{ restaurant.restaurantImage }}"
+            alt="{{ restaurant.restaurantImage }}"
+          />
+        </th>
+
+        <td>{{ restaurant.name }}</td>
+        <td>{{ restaurant.description }}</td>
+        <td>{{ restaurant.address }}</td>
+        <td>{{ restaurant.created | date }}</td>
+        <td>
+          <button
+            class="btn btn-outline-primary btn-sm"
+            (click)="openAddProductsDialogue(restaurant._id)"
+          >
+            <mat-icon aria-hidden="false" fontIcon="edit"></mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

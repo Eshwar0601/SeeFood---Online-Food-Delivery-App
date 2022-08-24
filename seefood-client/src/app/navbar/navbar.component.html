@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+  <span class="logo">SeeFood</span>
+  <div class="spacer"></div>
+  <a mat-button class="mx-2" routerLink="">Home</a>
+  <ng-container *ngIf="!userService.isLoggedIn; else showUser">
+    <a mat-raised-button color="accent" class="mx-2" (click)="openLoginDialog()"
+      >Login</a
+    >
+    <a
+      mat-raised-button
+      color="accent"
+      class="mx-2"
+      (click)="openRegisterDialog()"
+      >Sign Up</a
+    >
+  </ng-container>
+  <ng-template #showUser>
+    <button
+      mat-raised-button
+      class="mx-2"
+      (click)="router.navigate(['checkout'])"
+    >
+      <mat-icon
+        matBadge="{{ orderService.cartItemsLength }}"
+        matBadgeColor="warn"
+        >shopping_cart</mat-icon
+      >
+    </button>
+    <button mat-raised-button class="mx-2" (click)="router.navigate(['view'])">
+      Restaurants
+    </button>
+    <button
+      mat-raised-button
+      class="mx-2"
+      (click)="router.navigate(['orders'])"
+    >
+      Orders
+    </button>
+    <ng-container *ngIf="userService.isUserAdmin">
+      <a
+        mat-raised-button
+        color="accent"
+        (click)="router.navigate(['dashboard'])"
+        class="mx-2"
+        >Dashboard</a
+      >
+    </ng-container>
+
+    <a mat-raised-button class="mx-2" color="accent" (click)="logout()"
+      >Logout</a
+    >
+  </ng-template>
+</mat-toolbar>

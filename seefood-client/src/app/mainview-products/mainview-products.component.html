@@ -1,0 +1,75 @@
+<div class="container">
+  <ng-container *ngIf="">
+    <h1 class="display-1">No Products available for this restaurant.</h1>
+  </ng-container>
+
+  <ng-container *ngIf="products[0] == undefined; else showProducts">
+    <h1 class="display-1 my-5 text-center">
+      There Are No Menu Items Currently for this Restaurant.
+    </h1>
+    <div class="col-12 text-center">
+      <img
+        class="img-fluid"
+        width="340"
+        src="../../assets/images/noData.svg"
+        alt="No Products"
+      />
+    </div>
+    <div class="row align-content-center justify-content-center mt-3">
+      <div class="col-8 text-center">
+        <h3>Check out other Restaurant</h3>
+        <button
+          class="btn btn-outline-primary mx-5"
+          (click)="router.navigate(['view'])"
+        >
+          Check Restaurants.
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #showProducts>
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-2 text-center my-5">Menu Items</h1>
+      </div>
+    </div>
+    <div class="row my-3" *ngFor="let product of products">
+      <mat-card>
+        <div class="d-flex">
+          <!-- Image -->
+          <img
+            src="http://127.0.0.1:8080/{{ product.productImage }}"
+            alt="John Doe"
+            class="me-3 img-thumbnail"
+            style="width: 260px; height: 190px"
+          />
+          <!-- Body -->
+          <div>
+            <h2 class="fw-bold">
+              {{ product.name }}
+            </h2>
+            <small class="text-muted mb-1">
+              since : {{ product.created | date }}</small
+            >
+
+            <p class="mb-0">{{ product.description }}</p>
+            <br />
+            <p class="lead fw-bold">Price : {{ product.price }}/- INR</p>
+
+            <button
+              class="btn btn-outline-primary"
+              (click)="openAddToCartModal(product)"
+            >
+              <mat-icon
+                aria-hidden="false"
+                fontIcon="add_shopping_cart"
+              ></mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </ng-template>
+
+  <div class="row my-5"></div>
+</div>

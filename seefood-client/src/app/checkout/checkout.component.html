@@ -1,0 +1,93 @@
+<div class="container">
+  <ng-container
+    *ngIf="orderService.cartItems[0] == undefined; else elseTemplate"
+  >
+    <h1 class="display-1 my-5 text-center">Your Cart is Empty.</h1>
+    <div class="col-12 text-center">
+      <img
+        class="img-fluid"
+        width="400"
+        src="../../assets/images/cartIsEmpty.svg"
+        alt="Cart Is Empty"
+      />
+    </div>
+    <div class="row align-content-center justify-content-center mt-3">
+      <div class="col-8 text-center">
+        <h3>Order Food at your nearest restaurant</h3>
+        <button
+          class="btn btn-outline-primary mx-5"
+          (click)="router.navigate(['view'])"
+        >
+          Check Nearby Restaurants.
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-2 text-center my-5">Cart Items</h1>
+      </div>
+    </div>
+    <div class="row my-3" *ngFor="let cartitem of orderService.cartItems">
+      <mat-card>
+        <div class="d-flex">
+          <!-- Image -->
+          <img
+            src="http://127.0.0.1:8080/{{ cartitem.productImage }}"
+            alt="John Doe"
+            class="me-3 img-thumbnail"
+            style="width: 260px; height: 190px"
+          />
+          <!-- Body -->
+          <div>
+            <h2 class="fw-bold">
+              {{ cartitem.productName }}
+            </h2>
+
+            <p class="mb-0">{{ cartitem.productDescription }}</p>
+            <br />
+            <p class="lead fw-bold">
+              Price per Quantity : {{ cartitem.productPrice }}/- INR
+            </p>
+            <div class="row">
+              <div class="col">
+                <h2 class="mt-3">Quantity : {{ cartitem.quantity }}</h2>
+              </div>
+              <div class="col">
+                <h2 class="mt-3">
+                  Total : {{ cartitem.cartItemsTotal }}/- INR
+                </h2>
+              </div>
+              <div class="col">
+                <button
+                  class="mt-3"
+                  mat-raised-button
+                  color="primary"
+                  (click)="removeCartItem(cartitem._id)"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <hr />
+    <div class="row d-flex justify-content-around mt-4">
+      <div class="col">
+        <h3>
+          Cart Total : <strong>{{ orderService.total }}</strong>
+        </h3>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-lg btn-outline-primary" (click)="placeOrder()">
+          Place Order
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
+  <div class="row my-5"></div>
+</div>

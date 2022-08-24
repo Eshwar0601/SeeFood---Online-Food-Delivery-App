@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h1 class="display-1 my-5 text-center">Order Successfully placed.</h1>
+    <p class="lead text-center mb-5">
+      Order ID : <strong>{{ orderService.orderId }}</strong>
+    </p>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <img
+        class="img-fluid"
+        width="350"
+        src="../../assets/images/orderSuccess.svg"
+        alt="Order Success"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="row align-content-center justify-content-center mt-3">
+      <div class="col-8 text-center">
+        <button
+          class="btn btn-outline-primary mx-5"
+          (click)="router.navigate(['orders'])"
+        >
+          View Orders.
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

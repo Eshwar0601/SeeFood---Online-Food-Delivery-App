@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Sign Up</h2>
+<mat-dialog-content>
+  <button mat-raised-button color="primary" class="col-12 mb-1">
+    <mat-icon>facebook </mat-icon> Continue with Facebook
+  </button>
+  <button mat-raised-button color="primary" class="col-12 mb-1">
+    <mat-icon>windows </mat-icon> Continue with Microsoft
+  </button>
+  <form>
+    <mat-form-field appearance="fill" class="col-12 my-1">
+      <mat-label>User Name : </mat-label>
+      <input
+        matInput
+        placeholder="username"
+        [(ngModel)]="username"
+        required
+        name="username"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Email : </mat-label>
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="email"
+        required
+        name="email"
+        [errorStateMatcher]="matcher"
+      />
+
+      <mat-error *ngIf="isError && RegError.errors.email">{{
+        RegError.errors.email.message
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Password : </mat-label>
+      <input
+        matInput
+        placeholder="Password"
+        [(ngModel)]="password"
+        required
+        name="password"
+      />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="spacer"></div>
+  <button mat-raised-button (click)="RegisterNewUser()">Sign Up</button>
+  <button mat-dialog-close mat-button>Close</button>
+</mat-dialog-actions>

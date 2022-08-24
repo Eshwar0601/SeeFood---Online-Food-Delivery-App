@@ -1,0 +1,65 @@
+<h2 mat-dialog-title class="text-center">Add Products</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="addProducts()">
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Restaurant ID : </mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Product Name"
+        required
+        value="{{ userService.restaurentId }}"
+        name="name"
+        disabled
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Product Name : </mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Product Name"
+        required
+        name="name"
+        [(ngModel)]="name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Price : </mat-label>
+      <input
+        matInput
+        type="number"
+        placeholder="Product Price"
+        name="price"
+        [(ngModel)]="price"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Description : </mat-label>
+      <textarea
+        matInput
+        type="textarea"
+        placeholder="Product Description"
+        required
+        name="description"
+        [(ngModel)]="description"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field class="col-12">
+      <ngx-mat-file-input
+        required
+        (change)="onChange($event)"
+        placeholder="Upload image here"
+      ></ngx-mat-file-input>
+      <mat-icon matSuffix>folder</mat-icon>
+    </mat-form-field>
+    <div class="row my-1">
+      <div class="col-7"></div>
+      <div class="col-5">
+        <button mat-raised-button type="submit">Create</button>
+        <button mat-dialog-close mat-button>Close</button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

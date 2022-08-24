@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="mt-2 p-5 bg-primary text-white rounded text-center">
+        <h1 class="d-inline mr-4">
+          Own a Restaurant ? Register your Restaurant here.
+        </h1>
+
+        <button
+          class="d-inline ml-5"
+          mat-raised-button
+          (click)="openAddRestaurantDialogue()"
+        >
+          Add Restaurant
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row my-3" *ngFor="let restaurant of restaurants.restaurants">
+    <mat-card>
+      <div class="d-flex">
+        <!-- Image -->
+        <img
+          src="http://127.0.0.1:8080/{{ restaurant.restaurantImage }}"
+          alt="John Doe"
+          class="me-3 img-thumbnail"
+          style="width: 260px; height: 190px"
+        />
+        <!-- Body -->
+        <div>
+          <h2 class="fw-bold">
+            {{ restaurant.name }}
+          </h2>
+          <small class="text-muted mb-1">
+            since : {{ restaurant.created | date }}</small
+          >
+
+          <p class="lead mb-0">{{ restaurant.description }}</p>
+          <br />
+          <p>
+            {{ restaurant.address }}
+          </p>
+          <button
+            class="mx-auto"
+            mat-raised-button
+            color="primary"
+            (click)="showProductsView(restaurant._id)"
+          >
+            View
+            <mat-icon
+              aria-hidden="false"
+              fontIcon="arrow_circle_right"
+            ></mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="row my-5"></div>
+</div>

@@ -1,0 +1,54 @@
+<h2 mat-dialog-title class="text-center">Register Your Restaurant</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="registerRestaurant()">
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Name : </mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Restaurant Name"
+        required
+        name="name"
+        [(ngModel)]="name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Address : </mat-label>
+      <textarea
+        matInput
+        type="textarea"
+        placeholder="Restaurant Address"
+        required
+        name="address"
+        [(ngModel)]="address"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Description : </mat-label>
+      <textarea
+        matInput
+        type="textarea"
+        placeholder="Restaurant Description"
+        required
+        name="description"
+        [(ngModel)]="description"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <ngx-mat-file-input
+        required
+        (change)="onChange($event)"
+        placeholder="Upload image here"
+      ></ngx-mat-file-input>
+      <mat-icon matSuffix>folder</mat-icon>
+    </mat-form-field>
+    <div class="row my-1">
+      <div class="col-7"></div>
+      <div class="col-5">
+        <div class="spacer"></div>
+        <button mat-raised-button type="submit">Create</button>
+        <button mat-dialog-close mat-button>Close</button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

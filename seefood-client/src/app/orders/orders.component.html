@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row text-center">
+    <h1 class="my-5">Your Orders</h1>
+  </div>
+  <div class="row">
+    <table class="table table-responsive table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Items</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order._id }}</td>
+          <td>{{ order.orderAmount }}</td>
+          <td>{{ order.cartItems.length }}</td>
+          <td>{{ order.created | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

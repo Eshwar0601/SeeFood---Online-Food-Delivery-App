@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="my-5">
+    <h1 class="display-2 text-center">Products you own</h1>
+  </div>
+
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Restaurant ID</th>
+        <th scope="col">Price</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <th scope="row">
+          <img
+            width="50px"
+            height="50px"
+            class="rounded-circle"
+            src="http://127.0.0.1:8080/{{ product.productImage }}"
+            alt="{{ product.productImage }}"
+          />
+        </th>
+
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.restaurant }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.rating }} / 5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

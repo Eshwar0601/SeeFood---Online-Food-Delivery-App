@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Login</h2>
+<mat-dialog-content>
+  <button mat-raised-button color="primary" class="col-12 mb-1">
+    <mat-icon>facebook </mat-icon>Login with Facebook
+  </button>
+  <button mat-raised-button color="primary" class="col-12 mb-1">
+    <mat-icon>windows </mat-icon> Login with Microsoft
+  </button>
+  <form (ngSubmit)="loginHandler()">
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Email : </mat-label>
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="email"
+        required
+        name="email"
+      />
+
+      <!-- <mat-error *ngIf="isError && RegError.errors.email">{{
+        RegError.errors.email.message
+      }}</mat-error> -->
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-12">
+      <mat-label>Password</mat-label>
+      <input
+        required
+        name="password"
+        type="password"
+        matInput
+        [(ngModel)]="password"
+      />
+    </mat-form-field>
+    <div class="row my-1">
+      <div class="col-7"></div>
+      <div class="col-5">
+        <div class="spacer"></div>
+        <button mat-raised-button type="submit">Login</button>
+        <button mat-dialog-close mat-button>Close</button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<!-- <mat-dialog-actions>
+    <div class="spacer"></div>
+
+  </mat-dialog-actions> -->
